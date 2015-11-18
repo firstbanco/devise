@@ -58,7 +58,15 @@ module Devise
         scope = Devise::Mapping.find_scope!(resource_or_scope)
         user = warden.user(scope: scope, run_callbacks: false) # If there is no user
 
+        puts "#{Time.current}: in #{__method__} before inspect"
+        puts "warden.raw_session.class = #{warden.raw_session.class}"
+        puts warden.raw_session.method(:inspect).source_location
+        puts GC.stat
+        puts
         warden.raw_session.inspect # Without this inspect here. The session does not clear.
+        puts "#{Time.current}: in #{__method__} after inspect"
+        puts GC.stat
+        puts
         warden.logout(scope)
         warden.clear_strategies_cache!(scope: scope)
         instance_variable_set(:"@current_#{scope}", nil)
