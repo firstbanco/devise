@@ -1,0 +1,9 @@
+fail_on_violations: true
+ruby:
+  config_file: .rubocop/overrides.yml
+javascript:
+  config_file: .jshint.json
+  # The bamboard js files are being ignored because they are jsx format.
+  # Hound uses JSHint rather tha ESLint currently so it can't handle jsx.
+  # ESLint support is in the pipeline.
+  ignore_file: .javascript_ignore
