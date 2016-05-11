@@ -58,7 +58,7 @@ class DeviseController < Devise.parent_controller.constantize
   # Checks whether it's a devise mapped resource or not.
   def assert_is_devise_resource! #:nodoc:
     unknown_action! <<-MESSAGE unless devise_mapping
-Could not find devise mapping for path #{request.fullpath.inspect}.
+Could not find devise mapping for                                                           path #{request.fullpath.inspect}.
 This may happen for two reasons:
 
 1) You forgot to wrap your route inside the scope block. For example:
