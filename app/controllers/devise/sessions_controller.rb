@@ -35,15 +35,15 @@ class Devise::SessionsController < DeviseController
     devise_parameter_sanitizer.sanitize(:sign_in)
   end
 
-  def serialize_options(resource)
-    methods = resource_class.authentication_keys.dup
-    methods = methods.keys if methods.is_a?(Hash)
-    methods << :password if resource.respond_to?(:password)
-    { methods: methods, only: [:password] }
-  end
+                                                                def serialize_options(resource)
+                                                                  methods = resource_class.authentication_keys.dup
+                                                                  methods = methods.keys if methods.is_a?(Hash)
+                                                                  methods << :password if resource.respond_to?(:password)
+                                                                  {methods: methods, only: [:password]}
+                                                                end
 
   def auth_options
-    { scope: resource_name, recall: "#{controller_path}#new" }
+    {scope: resource_name, recall: "#{controller_path}#new"}
   end
 
   def translation_scope
